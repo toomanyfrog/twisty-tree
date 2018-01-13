@@ -11,6 +11,8 @@ TagManager:
   - Key
   - Stump2
   - Stump
+  - Stump1
+  - Home
   layers:
   - Default
   - TransparentFX

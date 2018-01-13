@@ -12,6 +12,7 @@ public class collectObject : MonoBehaviour {
 	public Text keyText;
 	public Text nutText;
 
+    public Image finish;
 	public Image heartKey;
 
 	// Use this for initialization
@@ -39,9 +40,31 @@ public class collectObject : MonoBehaviour {
 			gotHeartKey = true;
 			heartKey.enabled = true;
 		}
+        if (other.gameObject.CompareTag("Locked"))
+        {
+            if (keyCount > 0)
+            {
+                keyCount -= 1;
+                updateKeyText();
+                other.gameObject.SetActive(false);
+            }
+        }
+        if (other.gameObject.CompareTag("Home"))
+        {
+            if (gotHeartKey)
+            {
+                other.gameObject.SetActive(false);
+                heartKey.enabled = false;
+            }
+        }
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            finish.gameObject.SetActive(true);
+        }
 	}
 
-	void updateNutText() {
+
+    void updateNutText() {
 		nutText.text = "x" + nutCount.ToString ();
 	}
 
